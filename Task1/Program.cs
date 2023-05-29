@@ -17,7 +17,7 @@ namespace Task1
 
                     if (string.IsNullOrEmpty(input))
                     {
-                        throw new ArgumentException("Input cannot be empty.");
+                        throw new ArgumentNullException("Input cannot be empty.");
                     }
 
                     Console.WriteLine($"First character: {input[0]}");
@@ -25,6 +25,10 @@ namespace Task1
                     Console.WriteLine("Enter a command (continue, exit):");
                     command = Console.ReadLine()?.Trim() ?? string.Empty;
                 }
+                catch (ArgumentNullException anex)
+                {
+                    Console.WriteLine(anex.Message);
+                }   
                 catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
